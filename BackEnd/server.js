@@ -33,7 +33,12 @@ main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect(strConnection);
 }
+const Schema = mongoose.Schema;
 
+var itemSchema = new Schema({
+    Amount:Float,
+    Category:String,
+});
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })

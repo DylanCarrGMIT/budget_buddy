@@ -4,6 +4,7 @@ import {ArcElement, Tooltip, Legend} from 'chart.js';
 import Chart from "chart.js/auto";
 var categories = [];
 var amounts = [];
+//reads from local storage, then populates the arrays that chart.js will use
 if(JSON.parse(localStorage.getItem("category") != null))
 {
  categories = JSON.parse(localStorage.getItem("category"));

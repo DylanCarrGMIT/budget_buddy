@@ -39,24 +39,29 @@ function addToLog()
   var amount = [];
   var category = [];
   var matchingCategoryFound = false;
+  //checks if the "amount" item exists in local storage
   if("amount" in localStorage)
   {
    parseAmount = JSON.parse(localStorage.getItem("amount"));
    for(var i=0; i<parseAmount.length; i++)
    {
+     //parses the string data of the amount item in local storage to a float, so amounts
+     //can be added to existing categories
      amount[i] = parseFloat(parseAmount[i]);
      console.log(amount[i]);
    }
   }
+  //checks if the "category" item exists in local storage
   if("category" in localStorage)
   {
    category = JSON.parse(localStorage.getItem("category"));
   }
 
-  alert("Added to log!");
-  
   for(var i=0; i <category.length;i++)
   {
+    /*iterates through the categories and checks if the category name entered
+      in the input box matches an existing category. If so, it just adds the amount
+      entered to the amount associated with the existing category*/
     if(document.getElementById("category").value == category[i])
     {
       amount[i] += parseFloat(document.getElementById("amount").value);
@@ -65,6 +70,8 @@ function addToLog()
       matchingCategoryFound = true;
     }
   }
+  /*if it does not find an existing category, adds the category, and associated amount
+   as new items */
   if(matchingCategoryFound == false)
   {
     amount.push(document.getElementById("amount").value);

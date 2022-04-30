@@ -1,3 +1,4 @@
+import { ArcElement } from 'chart.js';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Button, TextInput } from 'react-native-web';
@@ -34,11 +35,18 @@ const App = () => {
 }
 function addToLog()
 {
+  var parseAmount = [];
   var amount = [];
   var category = [];
+  var matchingCategoryFound = false;
   if("amount" in localStorage)
   {
-   amount = JSON.parse(localStorage.getItem("amount"));
+   parseAmount = JSON.parse(localStorage.getItem("amount"));
+   for(var i=0; i<parseAmount.length; i++)
+   {
+     amount[i] = parseFloat(parseAmount[i]);
+     console.log(amount[i]);
+   }
   }
   if("category" in localStorage)
   {
@@ -47,9 +55,23 @@ function addToLog()
 
   alert("Added to log!");
   
-  amount.push(document.getElementById("amount").value);
-  window.localStorage.setItem("amount",JSON.stringify(amount));
-  category.push(document.getElementById("category").value);
-  window.localStorage.setItem("category",JSON.stringify(category));
+  for(var i=0; i <category.length;i++)
+  {
+    if(document.getElementById("category").value == category[i])
+    {
+      amount[i] += parseFloat(document.getElementById("amount").value);
+      console.log(amount[i]);
+      window.localStorage.setItem("amount",JSON.stringify(amount));
+      matchingCategoryFound = true;
+    }
+  }
+  if(matchingCategoryFound == false)
+  {
+    amount.push(document.getElementById("amount").value);
+    window.localStorage.setItem("amount",JSON.stringify(amount));
+    category.push(document.getElementById("category").value);
+    window.localStorage.setItem("category",JSON.stringify(category));
+  }
+  
 }
 export default App;

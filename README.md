@@ -3,7 +3,7 @@
 3)Type npm install in the CMD  
 4)Type npm start in the CMD  
 5)Navigate to server.js on the backend folder on VScode and open a intergrated terminal and type node server.js  
-6)import the SQL file userlogin in mysql  
+6)import the SQL file userlogin in mysql (found in Docs folder on github)  
 7)(If needed) change password in server.js to whatever password you set for you local machine  
 
 Once all steps above are done the applcation should be running and all functionality should be avalible

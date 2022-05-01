@@ -6,4 +6,4 @@
 6)import the SQL file userlogin in mysql  
 7)(If needed) change password in server.js to whatever password you set for you local machine  
 
-One all steps above are done the applcation should be running and all functionality should be avalible  
+One all steps above are done the applcation should be running and all functionality should be avalible
